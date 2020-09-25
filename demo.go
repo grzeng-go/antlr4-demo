@@ -2,18 +2,23 @@ package main
 
 import (
 	"fmt"
+	antlr_resource "github.com/antlr/antlr4/doc/resources"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/grzeng-go/antlr4-demo/antlr/arrayint"
 	"github.com/grzeng-go/antlr4-demo/antlr/expr"
 	"github.com/grzeng-go/antlr4-demo/antlr/hello"
 	"github.com/grzeng-go/antlr4-demo/antlr/labelexpr"
+	"github.com/grzeng-go/antlr4-demo/antlr/mysql"
+	"github.com/grzeng-go/antlr4-demo/antlr/selectsql"
 )
 
 func main() {
 	//helloDemo()
 	//arrayIntDemo()
 	//exprDemo()
-	labelExprVistorDemo()
+	//labelExprVistorDemo()
+	//mysqlDemo()
+	selectSqlDemo()
 }
 
 func helloDemo() {
@@ -85,7 +90,7 @@ func labelExprVistorDemo() {
 	parser := labelexpr.NewLabelExprParser(tokenStream)
 	prog := parser.Prog()
 	fmt.Println(prog.ToStringTree(nil, parser))
-	prog.Accept(NewEvalVistor())
+	prog.Accept(labelexpr.NewEvalVistor())
 }
 
 func labelExprListenerDemo() {
@@ -95,5 +100,29 @@ func labelExprListenerDemo() {
 	parser := labelexpr.NewLabelExprParser(tokenStream)
 	prog := parser.Prog()
 	fmt.Println(prog.ToStringTree(nil, parser))
-	antlr.ParseTreeWalkerDefault.Walk(NewEvalListener(), prog)
+	antlr.ParseTreeWalkerDefault.Walk(labelexpr.NewEvalListener(), prog)
+}
+
+func mysqlDemo() {
+	//stream := antlr.NewInputStream("select ship_power.gun_power, ship_info.*\nFROM\n\t(\n\t\tselect s.name as ship_name, sum(g.power) as gun_power, max(callibr) as max_callibr\n\t\tfrom\n\t\t\tships s inner join ships_guns sg on s.id = sg.ship_id inner join guns g on g.id = sg.guns_id\n\t\tgroup by s.name\n\t) ship_power\n\tinner join\n\t(\n\t\tselect s.name as ship_name, sc.class_name, sc.tonange, sc.max_length, sc.start_build, sc.max_guns_size\n\t\tfrom\n\t\t\tships s inner join ship_class sc on s.class_id = sc.id\n\t) ship_info using (ship_name);")
+	stream := antlr.NewInputStream("select * from abc a where a.name = 'xyz' and exists(select a from user where id = '1')")
+	changingStream := antlr_resource.NewCaseChangingStream(stream, true)
+	lexer := mysql.NewMySqlLexer(changingStream)
+	tokenStream := antlr.NewCommonTokenStream(lexer, 0)
+	parser := mysql.NewMySqlParser(tokenStream)
+	tree := parser.SelectStatement()
+	fmt.Println(tree.ToStringTree(nil, parser))
+	tree.Accept(mysql.NewMysqlVisitor())
+}
+
+func selectSqlDemo() {
+	//stream := antlr.NewInputStream("select ship_power.gun_power, ship_info.*\nFROM\n\t(\n\t\tselect s.name as ship_name, sum(g.power) as gun_power, max(callibr) as max_callibr\n\t\tfrom\n\t\t\tships s inner join ships_guns sg on s.id = sg.ship_id inner join guns g on g.id = sg.guns_id\n\t\tgroup by s.name\n\t) ship_power\n\tinner join\n\t(\n\t\tselect s.name as ship_name, sc.class_name, sc.tonange, sc.max_length, sc.start_build, sc.max_guns_size\n\t\tfrom\n\t\t\tships s inner join ship_class sc on s.class_id = sc.id\n\t) ship_info using (ship_name);")
+	stream := antlr.NewInputStream("select * from abc a where a.name = 'xyz' and exists(select a from user where id = '1')")
+	changingStream := antlr_resource.NewCaseChangingStream(stream, true)
+	lexer := selectsql.NewMySqlLexer(changingStream)
+	tokenStream := antlr.NewCommonTokenStream(lexer, 0)
+	parser := selectsql.NewMySqlParser(tokenStream)
+	tree := parser.Root()
+	fmt.Println(tree.ToStringTree(nil, parser))
+	tree.Accept(selectsql.NewVisitor())
 }
