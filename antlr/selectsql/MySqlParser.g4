@@ -304,11 +304,11 @@ stringLiteral
     : (
         STRING_CHARSET_NAME? STRING_LITERAL
         | START_NATIONAL_STRING_LITERAL
-      ) STRING_LITERAL+
+      ) STRING_LITERAL+                                                     #stringLiteral1
     | (
         STRING_CHARSET_NAME? STRING_LITERAL
         | START_NATIONAL_STRING_LITERAL
-      ) (COLLATE collationName)?
+      ) (COLLATE collationName)?                                            #stringLiteral2
     ;
 
 nullNotnull
@@ -326,7 +326,7 @@ constant
     | '-' decimalLiteral
     | hexadecimalLiteral | booleanLiteral
     | REAL_LITERAL | BIT_STRING
-    | NOT? nullLiteral=(NULL_LITERAL | NULL_SPEC_LITERAL)
+    | nullNotnull
     ;
 
 //    Data Types
@@ -384,11 +384,11 @@ collectionOptions
     ;
 
 convertedDataType
-    : typeName=(BINARY| NCHAR) lengthOneDimension?
-    | typeName=CHAR lengthOneDimension? ((CHARACTER SET | CHARSET) charsetName)?
-    | typeName=(DATE | DATETIME | TIME | JSON)
-    | typeName=DECIMAL lengthTwoDimension?
-    | (SIGNED | UNSIGNED) INTEGER?
+    : typeName=(BINARY| NCHAR) lengthOneDimension?                                      #convertedDataType1
+    | typeName=CHAR lengthOneDimension? ((CHARACTER SET | CHARSET) charsetName)?        #convertedDataType2
+    | typeName=(DATE | DATETIME | TIME | JSON)                                          #convertedDataType3
+    | typeName=DECIMAL lengthTwoDimension?                                              #convertedDataType4
+    | (SIGNED | UNSIGNED) INTEGER?                                                      #convertedDataType5
     ;
 
 lengthOneDimension
@@ -413,6 +413,7 @@ expressions
     : expression (',' expression)*
     ;
 
+// text
 intervalType
     : intervalTypeBase
     | YEAR | YEAR_MONTH | DAY_HOUR | DAY_MINUTE
@@ -457,7 +458,7 @@ specificFunction
             | inExpression=expression
           )
       ')'                                                           #positionFunctionCall
-    | (SUBSTR | SUBSTRING)
+    | sub=(SUBSTR | SUBSTRING)
       '('
         (
           sourceString=stringLiteral
@@ -539,22 +540,23 @@ levelInWeightListElement
     ;
 
 aggregateWindowedFunction
-    : (AVG | MAX | MIN | SUM)
-      '(' aggregator=(ALL | DISTINCT)? functionArg ')'
-    | COUNT '(' (starArg='*' | aggregator=ALL? functionArg) ')'
-    | COUNT '(' aggregator=DISTINCT functionArgs ')'
-    | (
+    : operateName=(AVG | MAX | MIN | SUM)
+      '(' aggregator=(ALL | DISTINCT)? functionArg ')'                          #aggregateWindowedFunction1
+    | COUNT '(' (starArg='*' | aggregator=ALL? functionArg) ')'                 #aggregateWindowedFunction2
+    | COUNT '(' aggregator=DISTINCT functionArgs ')'                            #aggregateWindowedFunction3
+    | linkName=(
         BIT_AND | BIT_OR | BIT_XOR | STD | STDDEV | STDDEV_POP
         | STDDEV_SAMP | VAR_POP | VAR_SAMP | VARIANCE
-      ) '(' aggregator=ALL? functionArg ')'
+      ) '(' aggregator=ALL? functionArg ')'                                     #aggregateWindowedFunction4
     | GROUP_CONCAT '('
         aggregator=DISTINCT? functionArgs
         (ORDER BY
           orderByExpression (',' orderByExpression)*
         )? (SEPARATOR separator=STRING_LITERAL)?
-      ')'
+      ')'                                                                       #aggregateWindowedFunction5
     ;
 
+// text
 scalarFunctionName
     : functionNameBase
     | ASCII | CURDATE | CURRENT_DATE | CURRENT_TIME
@@ -569,10 +571,10 @@ passwordFunctionClause
     ;
 
 functionArgs
-    : (constant | fullColumnName | functionCall | expression)
+    : functionArg
     (
       ','
-      (constant | fullColumnName | functionCall | expression)
+      functionArg
     )*
     ;
 
@@ -625,27 +627,33 @@ expressionAtom
     | left=expressionAtom jsonOperator right=expressionAtom         #jsonExpressionAtom
     ;
 
+//text
 unaryOperator
     : '!' | '~' | '+' | '-' | NOT
     ;
 
+//text
 comparisonOperator
     : '=' | '>' | '<' | '<' '=' | '>' '='
     | '<' '>' | '!' '=' | '<' '=' '>'
     ;
 
+//text
 logicalOperator
     : AND | '&' '&' | XOR | OR | '|' '|'
     ;
 
+//text
 bitOperator
     : '<' '<' | '>' '>' | '&' | '^' | '|'
     ;
 
+//text
 mathOperator
     : '*' | '/' | '%' | DIV | MOD | '+' | '-' | '--'
     ;
 
+//text
 jsonOperator
     : '-' '>' | '-' '>' '>'
     ;
@@ -653,6 +661,7 @@ jsonOperator
 //    Simple id sets
 //     (that keyword, which can be id)
 
+//text
 charsetNameBase
     : ARMSCII8 | ASCII | BIG5 | CP1250 | CP1251 | CP1256 | CP1257
     | CP850 | CP852 | CP866 | CP932 | DEC8 | EUCJPMS | EUCKR
@@ -662,24 +671,29 @@ charsetNameBase
     | UTF16LE | UTF32 | UTF8 | UTF8MB3 | UTF8MB4
     ;
 
+//text
 transactionLevelBase
     : REPEATABLE | COMMITTED | UNCOMMITTED | SERIALIZABLE
     ;
 
+//text
 privilegesBase
     : TABLES | ROUTINE | EXECUTE | FILE | PROCESS
     | RELOAD | SHUTDOWN | SUPER | PRIVILEGES
     ;
 
+//text
 intervalTypeBase
     : QUARTER | MONTH | DAY | HOUR
     | MINUTE | WEEK | SECOND | MICROSECOND
     ;
 
+//text
 dataTypeBase
     : DATE | TIME | TIMESTAMP | DATETIME | YEAR | ENUM | TEXT
     ;
 
+//text
 keywordsCanBeId
     : ACCOUNT | ACTION | AFTER | AGGREGATE | ALGORITHM | ANY
     | AT | AUDIT_ADMIN | AUTHORS | AUTOCOMMIT | AUTOEXTEND_SIZE
@@ -748,6 +762,7 @@ keywordsCanBeId
     | WORK | WRAPPER | X509 | XA | XA_RECOVER_ADMIN | XML
     ;
 
+// text
 functionNameBase
     : ABS | ACOS | ADDDATE | ADDTIME | AES_DECRYPT | AES_ENCRYPT
     | AREA | ASBINARY | ASIN | ASTEXT | ASWKB | ASWKT

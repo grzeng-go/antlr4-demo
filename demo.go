@@ -117,7 +117,8 @@ func mysqlDemo() {
 
 func selectSqlDemo() {
 	//stream := antlr.NewInputStream("select ship_power.gun_power, ship_info.*\nFROM\n\t(\n\t\tselect s.name as ship_name, sum(g.power) as gun_power, max(callibr) as max_callibr\n\t\tfrom\n\t\t\tships s inner join ships_guns sg on s.id = sg.ship_id inner join guns g on g.id = sg.guns_id\n\t\tgroup by s.name\n\t) ship_power\n\tinner join\n\t(\n\t\tselect s.name as ship_name, sc.class_name, sc.tonange, sc.max_length, sc.start_build, sc.max_guns_size\n\t\tfrom\n\t\t\tships s inner join ship_class sc on s.class_id = sc.id\n\t) ship_info using (ship_name);")
-	stream := antlr.NewInputStream("select * from abc a where a.name = 'xyz' and exists(select a from user where id = '1')")
+	//stream := antlr.NewInputStream("select * from abc a, (select * from xx) b where a.name = 'xyz' and exists(select a from user where id = '1')")
+	stream := antlr.NewInputStream("select * from abc a left join (select * from xx) b on a.id = b.id where a.name = 'xyz' and exists(select a from user where id = '1')")
 	changingStream := antlr_resource.NewCaseChangingStream(stream, true)
 	lexer := selectsql.NewMySqlLexer(changingStream)
 	tokenStream := antlr.NewCommonTokenStream(lexer, 0)

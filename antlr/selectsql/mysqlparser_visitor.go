@@ -176,8 +176,11 @@ type MySqlParserVisitor interface {
 	// Visit a parse tree produced by MySqlParser#decimalLiteral.
 	VisitDecimalLiteral(ctx *DecimalLiteralContext) interface{}
 
-	// Visit a parse tree produced by MySqlParser#stringLiteral.
-	VisitStringLiteral(ctx *StringLiteralContext) interface{}
+	// Visit a parse tree produced by MySqlParser#stringLiteral1.
+	VisitStringLiteral1(ctx *StringLiteral1Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#stringLiteral2.
+	VisitStringLiteral2(ctx *StringLiteral2Context) interface{}
 
 	// Visit a parse tree produced by MySqlParser#nullNotnull.
 	VisitNullNotnull(ctx *NullNotnullContext) interface{}
@@ -221,8 +224,20 @@ type MySqlParserVisitor interface {
 	// Visit a parse tree produced by MySqlParser#collectionOptions.
 	VisitCollectionOptions(ctx *CollectionOptionsContext) interface{}
 
-	// Visit a parse tree produced by MySqlParser#convertedDataType.
-	VisitConvertedDataType(ctx *ConvertedDataTypeContext) interface{}
+	// Visit a parse tree produced by MySqlParser#convertedDataType1.
+	VisitConvertedDataType1(ctx *ConvertedDataType1Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#convertedDataType2.
+	VisitConvertedDataType2(ctx *ConvertedDataType2Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#convertedDataType3.
+	VisitConvertedDataType3(ctx *ConvertedDataType3Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#convertedDataType4.
+	VisitConvertedDataType4(ctx *ConvertedDataType4Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#convertedDataType5.
+	VisitConvertedDataType5(ctx *ConvertedDataType5Context) interface{}
 
 	// Visit a parse tree produced by MySqlParser#lengthOneDimension.
 	VisitLengthOneDimension(ctx *LengthOneDimensionContext) interface{}
@@ -302,8 +317,20 @@ type MySqlParserVisitor interface {
 	// Visit a parse tree produced by MySqlParser#levelInWeightListElement.
 	VisitLevelInWeightListElement(ctx *LevelInWeightListElementContext) interface{}
 
-	// Visit a parse tree produced by MySqlParser#aggregateWindowedFunction.
-	VisitAggregateWindowedFunction(ctx *AggregateWindowedFunctionContext) interface{}
+	// Visit a parse tree produced by MySqlParser#aggregateWindowedFunction1.
+	VisitAggregateWindowedFunction1(ctx *AggregateWindowedFunction1Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#aggregateWindowedFunction2.
+	VisitAggregateWindowedFunction2(ctx *AggregateWindowedFunction2Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#aggregateWindowedFunction3.
+	VisitAggregateWindowedFunction3(ctx *AggregateWindowedFunction3Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#aggregateWindowedFunction4.
+	VisitAggregateWindowedFunction4(ctx *AggregateWindowedFunction4Context) interface{}
+
+	// Visit a parse tree produced by MySqlParser#aggregateWindowedFunction5.
+	VisitAggregateWindowedFunction5(ctx *AggregateWindowedFunction5Context) interface{}
 
 	// Visit a parse tree produced by MySqlParser#scalarFunctionName.
 	VisitScalarFunctionName(ctx *ScalarFunctionNameContext) interface{}

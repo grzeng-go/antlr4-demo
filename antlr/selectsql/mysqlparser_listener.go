@@ -176,8 +176,11 @@ type MySqlParserListener interface {
 	// EnterDecimalLiteral is called when entering the decimalLiteral production.
 	EnterDecimalLiteral(c *DecimalLiteralContext)
 
-	// EnterStringLiteral is called when entering the stringLiteral production.
-	EnterStringLiteral(c *StringLiteralContext)
+	// EnterStringLiteral1 is called when entering the stringLiteral1 production.
+	EnterStringLiteral1(c *StringLiteral1Context)
+
+	// EnterStringLiteral2 is called when entering the stringLiteral2 production.
+	EnterStringLiteral2(c *StringLiteral2Context)
 
 	// EnterNullNotnull is called when entering the nullNotnull production.
 	EnterNullNotnull(c *NullNotnullContext)
@@ -221,8 +224,20 @@ type MySqlParserListener interface {
 	// EnterCollectionOptions is called when entering the collectionOptions production.
 	EnterCollectionOptions(c *CollectionOptionsContext)
 
-	// EnterConvertedDataType is called when entering the convertedDataType production.
-	EnterConvertedDataType(c *ConvertedDataTypeContext)
+	// EnterConvertedDataType1 is called when entering the convertedDataType1 production.
+	EnterConvertedDataType1(c *ConvertedDataType1Context)
+
+	// EnterConvertedDataType2 is called when entering the convertedDataType2 production.
+	EnterConvertedDataType2(c *ConvertedDataType2Context)
+
+	// EnterConvertedDataType3 is called when entering the convertedDataType3 production.
+	EnterConvertedDataType3(c *ConvertedDataType3Context)
+
+	// EnterConvertedDataType4 is called when entering the convertedDataType4 production.
+	EnterConvertedDataType4(c *ConvertedDataType4Context)
+
+	// EnterConvertedDataType5 is called when entering the convertedDataType5 production.
+	EnterConvertedDataType5(c *ConvertedDataType5Context)
 
 	// EnterLengthOneDimension is called when entering the lengthOneDimension production.
 	EnterLengthOneDimension(c *LengthOneDimensionContext)
@@ -302,8 +317,20 @@ type MySqlParserListener interface {
 	// EnterLevelInWeightListElement is called when entering the levelInWeightListElement production.
 	EnterLevelInWeightListElement(c *LevelInWeightListElementContext)
 
-	// EnterAggregateWindowedFunction is called when entering the aggregateWindowedFunction production.
-	EnterAggregateWindowedFunction(c *AggregateWindowedFunctionContext)
+	// EnterAggregateWindowedFunction1 is called when entering the aggregateWindowedFunction1 production.
+	EnterAggregateWindowedFunction1(c *AggregateWindowedFunction1Context)
+
+	// EnterAggregateWindowedFunction2 is called when entering the aggregateWindowedFunction2 production.
+	EnterAggregateWindowedFunction2(c *AggregateWindowedFunction2Context)
+
+	// EnterAggregateWindowedFunction3 is called when entering the aggregateWindowedFunction3 production.
+	EnterAggregateWindowedFunction3(c *AggregateWindowedFunction3Context)
+
+	// EnterAggregateWindowedFunction4 is called when entering the aggregateWindowedFunction4 production.
+	EnterAggregateWindowedFunction4(c *AggregateWindowedFunction4Context)
+
+	// EnterAggregateWindowedFunction5 is called when entering the aggregateWindowedFunction5 production.
+	EnterAggregateWindowedFunction5(c *AggregateWindowedFunction5Context)
 
 	// EnterScalarFunctionName is called when entering the scalarFunctionName production.
 	EnterScalarFunctionName(c *ScalarFunctionNameContext)
@@ -611,8 +638,11 @@ type MySqlParserListener interface {
 	// ExitDecimalLiteral is called when exiting the decimalLiteral production.
 	ExitDecimalLiteral(c *DecimalLiteralContext)
 
-	// ExitStringLiteral is called when exiting the stringLiteral production.
-	ExitStringLiteral(c *StringLiteralContext)
+	// ExitStringLiteral1 is called when exiting the stringLiteral1 production.
+	ExitStringLiteral1(c *StringLiteral1Context)
+
+	// ExitStringLiteral2 is called when exiting the stringLiteral2 production.
+	ExitStringLiteral2(c *StringLiteral2Context)
 
 	// ExitNullNotnull is called when exiting the nullNotnull production.
 	ExitNullNotnull(c *NullNotnullContext)
@@ -656,8 +686,20 @@ type MySqlParserListener interface {
 	// ExitCollectionOptions is called when exiting the collectionOptions production.
 	ExitCollectionOptions(c *CollectionOptionsContext)
 
-	// ExitConvertedDataType is called when exiting the convertedDataType production.
-	ExitConvertedDataType(c *ConvertedDataTypeContext)
+	// ExitConvertedDataType1 is called when exiting the convertedDataType1 production.
+	ExitConvertedDataType1(c *ConvertedDataType1Context)
+
+	// ExitConvertedDataType2 is called when exiting the convertedDataType2 production.
+	ExitConvertedDataType2(c *ConvertedDataType2Context)
+
+	// ExitConvertedDataType3 is called when exiting the convertedDataType3 production.
+	ExitConvertedDataType3(c *ConvertedDataType3Context)
+
+	// ExitConvertedDataType4 is called when exiting the convertedDataType4 production.
+	ExitConvertedDataType4(c *ConvertedDataType4Context)
+
+	// ExitConvertedDataType5 is called when exiting the convertedDataType5 production.
+	ExitConvertedDataType5(c *ConvertedDataType5Context)
 
 	// ExitLengthOneDimension is called when exiting the lengthOneDimension production.
 	ExitLengthOneDimension(c *LengthOneDimensionContext)
@@ -737,8 +779,20 @@ type MySqlParserListener interface {
 	// ExitLevelInWeightListElement is called when exiting the levelInWeightListElement production.
 	ExitLevelInWeightListElement(c *LevelInWeightListElementContext)
 
-	// ExitAggregateWindowedFunction is called when exiting the aggregateWindowedFunction production.
-	ExitAggregateWindowedFunction(c *AggregateWindowedFunctionContext)
+	// ExitAggregateWindowedFunction1 is called when exiting the aggregateWindowedFunction1 production.
+	ExitAggregateWindowedFunction1(c *AggregateWindowedFunction1Context)
+
+	// ExitAggregateWindowedFunction2 is called when exiting the aggregateWindowedFunction2 production.
+	ExitAggregateWindowedFunction2(c *AggregateWindowedFunction2Context)
+
+	// ExitAggregateWindowedFunction3 is called when exiting the aggregateWindowedFunction3 production.
+	ExitAggregateWindowedFunction3(c *AggregateWindowedFunction3Context)
+
+	// ExitAggregateWindowedFunction4 is called when exiting the aggregateWindowedFunction4 production.
+	ExitAggregateWindowedFunction4(c *AggregateWindowedFunction4Context)
+
+	// ExitAggregateWindowedFunction5 is called when exiting the aggregateWindowedFunction5 production.
+	ExitAggregateWindowedFunction5(c *AggregateWindowedFunction5Context)
 
 	// ExitScalarFunctionName is called when exiting the scalarFunctionName production.
 	ExitScalarFunctionName(c *ScalarFunctionNameContext)

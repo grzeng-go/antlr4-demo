@@ -232,7 +232,11 @@ func (v *BaseMySqlParserVisitor) VisitDecimalLiteral(ctx *DecimalLiteralContext)
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseMySqlParserVisitor) VisitStringLiteral(ctx *StringLiteralContext) interface{} {
+func (v *BaseMySqlParserVisitor) VisitStringLiteral1(ctx *StringLiteral1Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitStringLiteral2(ctx *StringLiteral2Context) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -292,7 +296,23 @@ func (v *BaseMySqlParserVisitor) VisitCollectionOptions(ctx *CollectionOptionsCo
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseMySqlParserVisitor) VisitConvertedDataType(ctx *ConvertedDataTypeContext) interface{} {
+func (v *BaseMySqlParserVisitor) VisitConvertedDataType1(ctx *ConvertedDataType1Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitConvertedDataType2(ctx *ConvertedDataType2Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitConvertedDataType3(ctx *ConvertedDataType3Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitConvertedDataType4(ctx *ConvertedDataType4Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitConvertedDataType5(ctx *ConvertedDataType5Context) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -400,7 +420,23 @@ func (v *BaseMySqlParserVisitor) VisitLevelInWeightListElement(ctx *LevelInWeigh
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseMySqlParserVisitor) VisitAggregateWindowedFunction(ctx *AggregateWindowedFunctionContext) interface{} {
+func (v *BaseMySqlParserVisitor) VisitAggregateWindowedFunction1(ctx *AggregateWindowedFunction1Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitAggregateWindowedFunction2(ctx *AggregateWindowedFunction2Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitAggregateWindowedFunction3(ctx *AggregateWindowedFunction3Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitAggregateWindowedFunction4(ctx *AggregateWindowedFunction4Context) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMySqlParserVisitor) VisitAggregateWindowedFunction5(ctx *AggregateWindowedFunction5Context) interface{} {
 	return v.VisitChildren(ctx)
 }
 

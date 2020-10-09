@@ -359,11 +359,17 @@ func (s *BaseMySqlParserListener) EnterDecimalLiteral(ctx *DecimalLiteralContext
 // ExitDecimalLiteral is called when production decimalLiteral is exited.
 func (s *BaseMySqlParserListener) ExitDecimalLiteral(ctx *DecimalLiteralContext) {}
 
-// EnterStringLiteral is called when production stringLiteral is entered.
-func (s *BaseMySqlParserListener) EnterStringLiteral(ctx *StringLiteralContext) {}
+// EnterStringLiteral1 is called when production stringLiteral1 is entered.
+func (s *BaseMySqlParserListener) EnterStringLiteral1(ctx *StringLiteral1Context) {}
 
-// ExitStringLiteral is called when production stringLiteral is exited.
-func (s *BaseMySqlParserListener) ExitStringLiteral(ctx *StringLiteralContext) {}
+// ExitStringLiteral1 is called when production stringLiteral1 is exited.
+func (s *BaseMySqlParserListener) ExitStringLiteral1(ctx *StringLiteral1Context) {}
+
+// EnterStringLiteral2 is called when production stringLiteral2 is entered.
+func (s *BaseMySqlParserListener) EnterStringLiteral2(ctx *StringLiteral2Context) {}
+
+// ExitStringLiteral2 is called when production stringLiteral2 is exited.
+func (s *BaseMySqlParserListener) ExitStringLiteral2(ctx *StringLiteral2Context) {}
 
 // EnterNullNotnull is called when production nullNotnull is entered.
 func (s *BaseMySqlParserListener) EnterNullNotnull(ctx *NullNotnullContext) {}
@@ -451,11 +457,35 @@ func (s *BaseMySqlParserListener) EnterCollectionOptions(ctx *CollectionOptionsC
 // ExitCollectionOptions is called when production collectionOptions is exited.
 func (s *BaseMySqlParserListener) ExitCollectionOptions(ctx *CollectionOptionsContext) {}
 
-// EnterConvertedDataType is called when production convertedDataType is entered.
-func (s *BaseMySqlParserListener) EnterConvertedDataType(ctx *ConvertedDataTypeContext) {}
+// EnterConvertedDataType1 is called when production convertedDataType1 is entered.
+func (s *BaseMySqlParserListener) EnterConvertedDataType1(ctx *ConvertedDataType1Context) {}
 
-// ExitConvertedDataType is called when production convertedDataType is exited.
-func (s *BaseMySqlParserListener) ExitConvertedDataType(ctx *ConvertedDataTypeContext) {}
+// ExitConvertedDataType1 is called when production convertedDataType1 is exited.
+func (s *BaseMySqlParserListener) ExitConvertedDataType1(ctx *ConvertedDataType1Context) {}
+
+// EnterConvertedDataType2 is called when production convertedDataType2 is entered.
+func (s *BaseMySqlParserListener) EnterConvertedDataType2(ctx *ConvertedDataType2Context) {}
+
+// ExitConvertedDataType2 is called when production convertedDataType2 is exited.
+func (s *BaseMySqlParserListener) ExitConvertedDataType2(ctx *ConvertedDataType2Context) {}
+
+// EnterConvertedDataType3 is called when production convertedDataType3 is entered.
+func (s *BaseMySqlParserListener) EnterConvertedDataType3(ctx *ConvertedDataType3Context) {}
+
+// ExitConvertedDataType3 is called when production convertedDataType3 is exited.
+func (s *BaseMySqlParserListener) ExitConvertedDataType3(ctx *ConvertedDataType3Context) {}
+
+// EnterConvertedDataType4 is called when production convertedDataType4 is entered.
+func (s *BaseMySqlParserListener) EnterConvertedDataType4(ctx *ConvertedDataType4Context) {}
+
+// ExitConvertedDataType4 is called when production convertedDataType4 is exited.
+func (s *BaseMySqlParserListener) ExitConvertedDataType4(ctx *ConvertedDataType4Context) {}
+
+// EnterConvertedDataType5 is called when production convertedDataType5 is entered.
+func (s *BaseMySqlParserListener) EnterConvertedDataType5(ctx *ConvertedDataType5Context) {}
+
+// ExitConvertedDataType5 is called when production convertedDataType5 is exited.
+func (s *BaseMySqlParserListener) ExitConvertedDataType5(ctx *ConvertedDataType5Context) {}
 
 // EnterLengthOneDimension is called when production lengthOneDimension is entered.
 func (s *BaseMySqlParserListener) EnterLengthOneDimension(ctx *LengthOneDimensionContext) {}
@@ -617,12 +647,44 @@ func (s *BaseMySqlParserListener) EnterLevelInWeightListElement(ctx *LevelInWeig
 func (s *BaseMySqlParserListener) ExitLevelInWeightListElement(ctx *LevelInWeightListElementContext) {
 }
 
-// EnterAggregateWindowedFunction is called when production aggregateWindowedFunction is entered.
-func (s *BaseMySqlParserListener) EnterAggregateWindowedFunction(ctx *AggregateWindowedFunctionContext) {
+// EnterAggregateWindowedFunction1 is called when production aggregateWindowedFunction1 is entered.
+func (s *BaseMySqlParserListener) EnterAggregateWindowedFunction1(ctx *AggregateWindowedFunction1Context) {
 }
 
-// ExitAggregateWindowedFunction is called when production aggregateWindowedFunction is exited.
-func (s *BaseMySqlParserListener) ExitAggregateWindowedFunction(ctx *AggregateWindowedFunctionContext) {
+// ExitAggregateWindowedFunction1 is called when production aggregateWindowedFunction1 is exited.
+func (s *BaseMySqlParserListener) ExitAggregateWindowedFunction1(ctx *AggregateWindowedFunction1Context) {
+}
+
+// EnterAggregateWindowedFunction2 is called when production aggregateWindowedFunction2 is entered.
+func (s *BaseMySqlParserListener) EnterAggregateWindowedFunction2(ctx *AggregateWindowedFunction2Context) {
+}
+
+// ExitAggregateWindowedFunction2 is called when production aggregateWindowedFunction2 is exited.
+func (s *BaseMySqlParserListener) ExitAggregateWindowedFunction2(ctx *AggregateWindowedFunction2Context) {
+}
+
+// EnterAggregateWindowedFunction3 is called when production aggregateWindowedFunction3 is entered.
+func (s *BaseMySqlParserListener) EnterAggregateWindowedFunction3(ctx *AggregateWindowedFunction3Context) {
+}
+
+// ExitAggregateWindowedFunction3 is called when production aggregateWindowedFunction3 is exited.
+func (s *BaseMySqlParserListener) ExitAggregateWindowedFunction3(ctx *AggregateWindowedFunction3Context) {
+}
+
+// EnterAggregateWindowedFunction4 is called when production aggregateWindowedFunction4 is entered.
+func (s *BaseMySqlParserListener) EnterAggregateWindowedFunction4(ctx *AggregateWindowedFunction4Context) {
+}
+
+// ExitAggregateWindowedFunction4 is called when production aggregateWindowedFunction4 is exited.
+func (s *BaseMySqlParserListener) ExitAggregateWindowedFunction4(ctx *AggregateWindowedFunction4Context) {
+}
+
+// EnterAggregateWindowedFunction5 is called when production aggregateWindowedFunction5 is entered.
+func (s *BaseMySqlParserListener) EnterAggregateWindowedFunction5(ctx *AggregateWindowedFunction5Context) {
+}
+
+// ExitAggregateWindowedFunction5 is called when production aggregateWindowedFunction5 is exited.
+func (s *BaseMySqlParserListener) ExitAggregateWindowedFunction5(ctx *AggregateWindowedFunction5Context) {
 }
 
 // EnterScalarFunctionName is called when production scalarFunctionName is entered.
