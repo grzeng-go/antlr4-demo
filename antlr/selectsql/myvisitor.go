@@ -1300,7 +1300,7 @@ func (mv *MyVisitor) VisitCollectionDataType(ctx *CollectionDataTypeContext) int
 		character := ctx.CHARACTER()
 		if character != nil {
 			sb.WriteString(character.GetText() + WS)
-			sb.WriteString(ctx.SET(0).GetText() + WS)
+			sb.WriteString(ctx.SET(1).GetText() + WS)
 		}
 
 		sb.WriteString(charsetName.GetText() + WS)
